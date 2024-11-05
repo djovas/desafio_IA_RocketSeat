@@ -63,7 +63,7 @@ df_faturamento = pd.DataFrame.from_dict(dict_faturamento)
 ````
 
 E a base ficou da seguinte forma:
-````
+
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -150,7 +150,7 @@ E a base ficou da seguinte forma:
   </tbody>
 </table>
 </div>
-````
+
 
 ## Média do Faturamento
 
