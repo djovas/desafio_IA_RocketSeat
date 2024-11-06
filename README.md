@@ -58,9 +58,7 @@ Com a base proposta, transformei o dicionário em um DataFrame
 
 <br>
 
-````
-df_faturamento = pd.DataFrame.from_dict(dict_faturamento)
-````
+````df_faturamento = pd.DataFrame.from_dict(dict_faturamento)````
 
 E a base ficou da seguinte forma:
 
@@ -151,6 +149,91 @@ E a base ficou da seguinte forma:
 </table>
 </div>
 
+<br>
+
+Após a criação do DF, ajustei o campo ***data_ref*** para o formato ***datetime64***, pois no primeiro momento, ele é interpretado como ***object***:
+
+````df_faturamento['data_ref'] = pd.to_datetime(df_faturamento['data_ref'])````
+
+E abaixo temos o formato da coluna.
+
+````df_faturamento.info()````
+
+````
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 12 entries, 0 to 11
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype         
+---  ------    --------------  -----         
+ 0   data_ref  12 non-null     datetime64[ns]
+ 1   valor     12 non-null     int64         
+dtypes: datetime64[ns](1), int64(1)
+memory usage: 324.0 bytes
+````
+
+<br>
 
 ## Média do Faturamento
 
+Para a média de faturamento, uitilizei a função ***mean*** e formatei para printar as duas casas decimais:
+
+````
+media_faturamento = df_faturamento.valor.mean()
+print(f'$ {media_faturamento:.2f}')
+````
+
+____
+Output:
+
+````$ 642083.33````
+
+<br>
+
+## Gráfico de Barras Vertical - Mês e Valor
+
+Utilizei a função ***plot.bar*** para poder gerar o gráfico de barras, mas com a função ***sort_values***, utilizando o campo ***data_ref*** como eixo X e de forma crescente.
+
+````
+faturamento_bar = df_faturamento.sort_values('data_ref', ascending=True).plot.bar(
+    x='data_ref', y='valor', color="#003666", 
+    title="Faturamento por Mês em Barras", xlabel='Mês de Referência', ylabel='Faturamento'
+)
+````
+____
+
+Output:
+
+![alt text](images/bar_graph.png)
+
+<br>
+
+## Gráfico de Linhas - Mês de Referência e o Valor
+
+Utilizei o mesmo formato do tópico anterior, porém, criando o gráfico de linhas
+
+````
+faturamento_line = df_faturamento.sort_values('data_ref', ascending=True).plot.line(
+    x='data_ref', y='valor', color="#003666", 
+    title="Faturamento por Mês em Barras", xlabel='Mês de Referência', ylabel='Faturamento'
+)
+````
+
+![alt text](images/line_graph.png)
+
+<br><br>
+
+
+# Análise Final
+
+Com a base de dados proposta, mais por ser um estudo básico sobre funcionalidades das bibliotecas ***Pandas*** e ***MatPlotLib***, não conseguimos ter uma análise mais profunda sobre os dados, pois as datas informadas estão variadas, não mantendo um padrão. 
+
+Mas, pelos dados apresentados, podemos concluir que o faturamento da Empresa X foi um valor alto num primeiro momento, porém que a medida do tempo, foi caindo até chegar no faturamento mínimo registrado em *01/09/2022*. Após essa data, tivemos faturamentos que variavam a cada registro, atingindo um novo pico de faturamento em *01/05/2023*, tendo uma queda no registro seguinte, mas que retornou o crescimento nos próximos dois registros.
+
+<br><br>
+
+## 🚀 Sobre mim
+Meu nome é Giovani Duarte, tenho 30 anos, sou Analista de Dados sou de Belo Horizonte/MG. 
+
+## 🔗 Links
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/djovas)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/giovani-duarte-de-souza/)
