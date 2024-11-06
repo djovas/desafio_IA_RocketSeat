@@ -1,5 +1,7 @@
 # desafio_IA_RocketSeat
 
+<img src="https://blog.rocketseat.com.br/content/images/2023/12/IMG_blog-4.png" width="750" height="300" />
+
 Este é o primeiro desafio proposto pela RocketSeat no módulo de IA.
 
 O primeiro desafio proposto tem a finalidade de botar em prática alguns conceitos em estatística e transformar dados em gráficos na linguagem Python.
